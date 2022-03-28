@@ -1,0 +1,16 @@
+version: "3.9"
+services:
+  mysql:
+    container_name: mysql_garage
+    image: mysql:8.0.27
+    volumes:
+      - ./mysql/:/docker-entrypoint-initdb.d/
+    command: '--default-authentication-plugin=mysql_native_password'
+    environment:
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: admin
+      MYSQL_ROOT_PASSWORD: admin
+      MYSQL_DATABASE: garage
+    ports:
+      - "3306:3306"
+    restart: always
